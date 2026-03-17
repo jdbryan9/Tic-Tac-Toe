@@ -50,6 +50,28 @@ h1 {
   color: var(--muted);
 }
 
+
+.mode-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.2rem 0 1rem;
+}
+
+.mode-wrap label {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.mode-wrap select {
+  background: rgba(11, 8, 36, 0.45);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+}
+
 .status-wrap {
   margin-bottom: 1rem;
 }
