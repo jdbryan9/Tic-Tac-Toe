@@ -24,21 +24,19 @@ A colorful, browser-based Tic-Tac-Toe game with a modern glassmorphism UI, turn-
 3. Open your browser and go to:
 
    ```
-   http://127.0.0.1:4173
+   http://localhost:8000
    ```
 
-4. Stop the server with `Ctrl + C` in the terminal.
+## How to play
 
-## How to Play
+- Choose a mode from the **Game Mode** dropdown:
+  - **Two Players**: Player X and Player O take turns on the same device.
+  - **Vs Computer**: You are Player X, and the computer is Player O.
+- Click any empty square to place your mark.
+- The first to align three marks in a row, column, or diagonal wins.
+- Click **New Game** to clear the board and play again.
 
-- Players take turns placing `X` and `O` on the 3×3 board.
-- First player to align 3 symbols in a row, column, or diagonal wins.
-- If all 9 cells are filled without a winner, the game is a draw.
-- Click **🔁 New Game** to clear the board and start a new round.
-- The scoreboard updates after each round and tracks results while the page remains open.
+## Notes
 
-## Project Structure
-
-- `index.html` – game layout and UI elements
-- `styles.css` – vibrant styling and responsive design
-- `script.js` – gameplay logic, win/draw detection, score handling
+- In **Vs Computer** mode, the computer chooses a random available square on its turn.
+- The scoreboard tracks wins and draws while the page stays open.

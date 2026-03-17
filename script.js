@@ -9,9 +9,13 @@ const WIN_PATTERNS = [
   [2, 4, 6]
 ];
 
+const HUMAN_MODE = 'human';
+const COMPUTER_MODE = 'computer';
+
 const cells = document.querySelectorAll('.cell');
 const statusEl = document.getElementById('status');
 const resetBtn = document.getElementById('resetBtn');
+const gameModeSelect = document.getElementById('gameMode');
 const xScoreEl = document.getElementById('xScore');
 const drawScoreEl = document.getElementById('drawScore');
 const oScoreEl = document.getElementById('oScore');
@@ -23,13 +27,20 @@ const scores = { X: 0, O: 0, draw: 0 };
 
 function handleCellClick(event) {
   const index = Number(event.currentTarget.dataset.index);
+  processMove(index, event.currentTarget);
 
+  if (isComputerTurn()) {
+    window.setTimeout(playComputerTurn, 400);
+  }
+}
+
+function processMove(index, cellEl) {
   if (!gameActive || board[index]) {
     return;
   }
 
   board[index] = activePlayer;
-  renderMove(event.currentTarget, activePlayer);
+  renderMove(cellEl, activePlayer);
 
   if (hasPlayerWon(activePlayer)) {
     gameActive = false;
@@ -50,7 +61,33 @@ function handleCellClick(event) {
   }
 
   activePlayer = activePlayer === 'X' ? 'O' : 'X';
-  statusEl.textContent = `Player ${activePlayer}'s turn`;
+  statusEl.textContent = getTurnMessage();
+}
+
+function playComputerTurn() {
+  if (!isComputerTurn()) {
+    return;
+  }
+
+  const availableIndexes = board
+    .map((value, index) => (value === '' ? index : null))
+    .filter((index) => index !== null);
+
+  const randomChoice = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+  const targetCell = cells[randomChoice];
+  processMove(randomChoice, targetCell);
+}
+
+function isComputerTurn() {
+  return gameActive && gameModeSelect.value === COMPUTER_MODE && activePlayer === 'O';
+}
+
+function getTurnMessage() {
+  if (isComputerTurn()) {
+    return "Computer O's turn";
+  }
+
+  return `Player ${activePlayer}'s turn`;
 }
 
 function renderMove(cell, player) {
@@ -77,7 +114,7 @@ function resetBoard() {
   board = Array(9).fill('');
   activePlayer = 'X';
   gameActive = true;
-  statusEl.textContent = `Player ${activePlayer}'s turn`;
+  statusEl.textContent = getTurnMessage();
 
   cells.forEach((cell) => {
     cell.textContent = '';
@@ -96,4 +133,5 @@ cells.forEach((cell) => {
   cell.addEventListener('click', handleCellClick);
 });
 
+gameModeSelect.addEventListener('change', resetBoard);
 resetBtn.addEventListener('click', resetBoard);
