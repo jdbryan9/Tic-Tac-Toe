@@ -1,14 +1,24 @@
-# Tic-Tac-Toe
+# Vibrant Tic-Tac-Toe
 
-A colorful browser-based Tic-Tac-Toe game.
+A colorful, browser-based Tic-Tac-Toe game with a modern glassmorphism UI, turn-by-turn status updates, and persistent in-session score tracking for X wins, O wins, and draws.
 
-## How to run
+## Requirements
 
-1. Open a terminal in this project directory.
-2. Start a local static server:
+- A modern web browser (Chrome, Firefox, Edge, Safari)
+- *(Optional)* Python 3 for running a local static server
+
+## Run the Game
+
+### Option 1: Open directly
+1. In this project folder, locate `index.html`.
+2. Double-click it (or open it in your browser manually).
+
+### Option 2: Run with a local server (recommended)
+1. Open a terminal in the project directory.
+2. Start a static server:
 
    ```bash
-   python3 -m http.server 8000
+   python3 -m http.server 4173
    ```
 
 3. Open your browser and go to:
