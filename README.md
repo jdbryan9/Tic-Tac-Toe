@@ -24,19 +24,22 @@ A colorful, browser-based Tic-Tac-Toe game with a modern glassmorphism UI, turn-
 3. Open your browser and go to:
 
    ```
-   http://localhost:8000
+   http://localhost:4173
    ```
 
 ## How to play
 
-- Choose a mode from the **Game Mode** dropdown:
+- Choose a mode from the **Game Mode** dropdown before beginning:
   - **Two Players**: Player X and Player O take turns on the same device.
   - **Vs Computer**: You are Player X, and the computer is Player O.
+- If you choose **Vs Computer**, select a difficulty:
+  - **Easy**: The computer chooses a random available square.
+  - **Hard**: The computer chooses by priority — center square first, then any corner square, then any remaining square.
 - Click any empty square to place your mark.
 - The first to align three marks in a row, column, or diagonal wins.
 - Click **New Game** to clear the board and play again.
 
 ## Notes
 
-- In **Vs Computer** mode, the computer chooses a random available square on its turn.
+- Changing game mode or difficulty starts a fresh round.
 - The scoreboard tracks wins and draws while the page stays open.
